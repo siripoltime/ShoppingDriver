@@ -3,6 +3,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+import 'package:shoppingfood/provider/google_sign_in.dart';
 import 'package:shoppingfood/utility/my_constant.dart';
 import 'package:shoppingfood/widgete/show_images.dart';
 import 'package:shoppingfood/widgete/show_title.dart';
@@ -17,24 +19,22 @@ class Authen extends StatefulWidget {
 class _AuthenState extends State<Authen> {
   bool statusRed = true;
 
-  Future<Null> processSingGoogle() async {
-    GoogleSignIn _googleSignIn = GoogleSignIn(
-      scopes: [
-        'email',
-        'https://www.googleapis.com/auth/contacts.readonly',
-      ],
-    );
-    
-    await Firebase.initializeApp().then((value) async {
-      await _googleSignIn.signIn().then((value) {
-        // ignore: avoid_print
-        print('LoginGoogle');
-      });
-    });
+  // Future<Null> processSingGoogle() async {
+  //   GoogleSignIn _googleSignIn = GoogleSignIn(
+  //     scopes: [
+  //       'email',
+  //       'https://www.googleapis.com/auth/contacts.readonly',
+  //     ],
+  //   );
 
-  }
+  //   await Firebase.initializeApp().then((value) async {
+  //     await _googleSignIn.signIn().then((value) {
+  //       // ignore: avoid_print
+  //       print('LoginGoogle');
+  //     });
+  //   });
 
-  
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,10 @@ class _AuthenState extends State<Authen> {
           child: ElevatedButton(
             style: MyConstant().myButtonStyle(),
             onPressed: () {
-              processSingGoogle();
+              // processSingGoogle();
+              final provider =
+                  Provider.of<GoogleSignInprovider>(context, listen: false);
+              provider.googleLogin();
             },
             child: Text('google'),
           ),
@@ -123,7 +126,7 @@ class _AuthenState extends State<Authen> {
   //       'https://www.googleapis.com/auth/contacts.readonly',
   //     ],
   //   );
-    
+
   //   await Firebase.initializeApp().then((value) async {
   //     await _googleSignIn.signIn().then((value) {
   //       // ignore: avoid_print
