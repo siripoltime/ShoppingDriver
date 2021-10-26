@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_void_to_null, sized_box_for_whitespace
 
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:provider/provider.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:provider/provider.dart';
 import 'package:shoppingfood/provider/google_sign_in.dart';
 import 'package:shoppingfood/utility/my_constant.dart';
 import 'package:shoppingfood/widgete/show_images.dart';
@@ -19,23 +19,7 @@ class Authen extends StatefulWidget {
 class _AuthenState extends State<Authen> {
   bool statusRed = true;
 
-  // Future<Null> processSingGoogle() async {
-  //   GoogleSignIn _googleSignIn = GoogleSignIn(
-  //     scopes: [
-  //       'email',
-  //       'https://www.googleapis.com/auth/contacts.readonly',
-  //     ],
-  //   );
-
-  //   await Firebase.initializeApp().then((value) async {
-  //     await _googleSignIn.signIn().then((value) {
-  //       // ignore: avoid_print
-  //       print('LoginGoogle');
-  //     });
-  //   });
-
-  // }
-
+ 
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
@@ -53,7 +37,7 @@ class _AuthenState extends State<Authen> {
               buildUser(size),
               buildPassword(size),
               buildLogin(size),
-              buildLoginGoogle(size),
+              // buildLoginGoogle(size),
               buildCreateAccount(),
             ],
           ),
@@ -96,44 +80,28 @@ class _AuthenState extends State<Authen> {
     );
   }
 
-  Row buildLoginGoogle(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 16),
-          width: size * 0.6,
-          child: ElevatedButton(
-            style: MyConstant().myButtonStyle(),
-            onPressed: () {
-              // processSingGoogle();
-              final provider =
-                  Provider.of<GoogleSignInprovider>(context, listen: false);
-              provider.googleLogin();
-            },
-            child: Text('google'),
-          ),
-        ),
-      ],
-    );
-  }
-
-  // ignore: prefer_void_to_null
-  // Future<Null> processSingGoogle() async {
-  //   GoogleSignIn _googleSignIn = GoogleSignIn(
-  //     scopes: [
-  //       'email',
-  //       'https://www.googleapis.com/auth/contacts.readonly',
+  // Row buildLoginGoogle(double size) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       Container(
+  //         margin: EdgeInsets.symmetric(vertical: 16),
+  //         width: size * 0.6,
+  //         child: ElevatedButton(
+  //           style: MyConstant().myButtonStyle(),
+  //           onPressed: () {
+  //             // processSingGoogle();
+  //             final provider =
+  //                 Provider.of<GoogleSignInprovider>(context, listen: false);
+  //             provider.googleLogin();
+  //           },
+  //           child: Text('google'),
+  //         ),
+  //       ),
   //     ],
   //   );
-
-  //   await Firebase.initializeApp().then((value) async {
-  //     await _googleSignIn.signIn().then((value) {
-  //       // ignore: avoid_print
-  //       print('LoginGoogle');
-  //     });
-  //   });
   // }
+
 
   Row buildUser(double size) {
     return Row(

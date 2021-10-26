@@ -193,7 +193,8 @@ class _CreateAccountState extends State<CreateAccount> {
             buildPhone(size),
             buildName(size),
             buildUser(size),
-            buildPassword(size)
+            buildPassword(size),
+            buildTitle('รูปภาพ'),
           ],
         ),
       ),
