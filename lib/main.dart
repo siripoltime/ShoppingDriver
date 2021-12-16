@@ -1,6 +1,9 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
+// ignore_for_file: avoid_print, prefer_void_to_null, prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:provider/provider.dart';
 import 'package:shoppingfood/provider/google_sign_in.dart';
 import 'package:shoppingfood/states/authen.dart';
@@ -20,11 +23,39 @@ final Map<String, WidgetBuilder> map = {
 
 String? initlaRoute;
 
-void main() async {
+Future<Null> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  runApp(MyApp());
-  initlaRoute = MyConstant.routeAuthen;
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  String? type = preferences.getString('type');
+  print(type);
+  if (type?.isEmpty ?? true) {
+    initlaRoute = MyConstant.routeAuthen;
+    runApp(MyApp());
+  } else {
+    switch (type) {
+      case 'buyer':
+        initlaRoute = MyConstant.routeBuyerService;
+        runApp(MyApp());
+
+        break;
+      case 'seller':
+        initlaRoute = MyConstant.routeSaleService;
+        runApp(MyApp());
+
+        break;
+      case 'rider':
+        initlaRoute = MyConstant.routeRiderService;
+        runApp(MyApp());
+
+        break;
+      default:
+    }
+  }
+
+  // runApp(MyApp());
+  // initlaRoute = MyConstant.routeAuthen;
 }
 
 class MyApp extends StatelessWidget {

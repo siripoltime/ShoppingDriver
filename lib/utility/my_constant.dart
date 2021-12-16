@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class MyConstant {
@@ -17,6 +19,7 @@ class MyConstant {
   static String image2 = 'images/image2.png';
   static String image3 = 'images/image3.png';
   static String image4 = 'images/image4.png';
+  static String avater = 'images/account.png';
 
   // Color
 
@@ -35,9 +38,22 @@ class MyConstant {
         color: dart,
         fontWeight: FontWeight.w700,
       );
+
+  TextStyle h2WhiteStyle() => TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+        fontWeight: FontWeight.w700,
+      );
+
   TextStyle h3Style() => TextStyle(
         fontSize: 14,
         color: dart,
+        fontWeight: FontWeight.normal,
+      );
+
+  TextStyle h3WhiteStyle() => TextStyle(
+        fontSize: 14,
+        color: Colors.white,
         fontWeight: FontWeight.normal,
       );
 
